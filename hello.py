@@ -10,7 +10,7 @@ class Example(QWidget):
         super().__init__()
         self.initUI()
 
-    def inintUI(self):
+    def initUI(self):
         self.setFixedSize(500, 500)
         self.btn = QPushButton('Круги', self)
         self.btn.resize(101, 23)
