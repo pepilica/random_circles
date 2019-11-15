@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QWidget, QApplication, QPushButton
-from PyQt5 import uic
 from PyQt5.QtGui import QPainter, QColor
 from random import choice
 import sys
@@ -8,14 +7,8 @@ import sys
 class Example(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
-
-    def initUI(self):
-        self.setFixedSize(500, 500)
-        self.btn = QPushButton('Круги', self)
-        self.btn.resize(101, 23)
-        self.btn.move(200, 460)
-        self.btn.clicked.connect(self.button)
+        window = InitUi(self)
+        window.create()
 
     def button(self):
         self.update()
@@ -32,6 +25,18 @@ class Example(QWidget):
             size = choice(range(300))
             qp.drawEllipse(choice(range(300)), choice(range(300)),
                            size, size)
+
+
+class InitUi:
+    def __init__(self, window):
+        self.window = window
+
+    def create(self):
+        self.window.setFixedSize(500, 500)
+        self.window.btn = QPushButton('Круги', self.window)
+        self.window.btn.resize(101, 23)
+        self.window.btn.move(200, 460)
+        self.window.btn.clicked.connect(self.window.button)
 
 
 if __name__ == '__main__':
